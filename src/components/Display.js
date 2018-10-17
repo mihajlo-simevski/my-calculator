@@ -2,11 +2,11 @@ import React from 'react';
 import { Container, Divider } from 'semantic-ui-react';
 import './Display.css';
 
-const Display = () => 
+const Display = ({input, operations}) => 
 <Container className="displayWrapper">
-    <Container textAlign="right" fluid> Operations</Container>
+    <Container textAlign="right" fluid> Operations: {operations}</Container>
     <Divider />
-    <Container textAlign="right" fluid> Input</Container>
+    <Container textAlign="right" fluid> Input: {input} </Container>
 </Container>
 
 export default Display;
