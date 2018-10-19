@@ -9,19 +9,37 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      input: 0,
+      input: [],
       operations: []
     }
   }
   addNumber = (newNumber) => {
-    // tslint:disable-next-line:no-console
-    console.log("Red","Green", newNumber);
-    
-      let input = [...this.state.operations, newNumber];
-    this.setState({
-      operations: input
-    })
-    
+      
+      if(newNumber === '+'){
+        this.setState({
+          input: newNumber,
+          operations: [...this.state.operations, newNumber]
+        })
+      }
+      else{
+        this.setState(function (prevState) {
+          if(this.state.input === '+'){
+            return {
+              input: newNumber,
+              operations: [...this.state.operations, newNumber]
+            };
+          }
+          else {
+            return {
+              input: [...this.state.input, newNumber],
+              operations: [...this.state.operations, newNumber]
+            };
+          }
+          
+        });
+      }
+      
+        
   }
  render() {
     return (
